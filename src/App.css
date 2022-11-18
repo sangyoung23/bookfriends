@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Varela Round", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header */
+.Header {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  padding: 20px 30px;
+}
+
+.Header .title {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  width: 180px;
+  height: 30px;
+  margin-right: 50px;
+  border-radius: 30px;
+  background-color: #424242;
+  cursor: pointer;
+}
+
+.Header .title h1 {
+  font-size: 19px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Header ul {
+  display: flex;
+  width: 1300px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Header ul li {
+  font-size: 20px;
+  margin-right: 60px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.Header .loginout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #424242;
+}
+
+.Header .loginout h1 {
+  font-size: 14px;
+  color: white;
 }
