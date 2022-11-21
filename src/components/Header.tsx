@@ -4,12 +4,11 @@ const Header = () => {
   return (
     <div className="Header">
       <div className="title">
-        <h1>BOOK FRIENDS</h1>
+        <StyledLink to={"/"}>
+          <h1>BOOK FRIENDS</h1>
+        </StyledLink>
       </div>
       <ul>
-        <li>
-          <StyledLink to={"/Search"}>검색</StyledLink>
-        </li>
         <li>
           <StyledLink to={"/Basket"}>장바구니</StyledLink>
         </li>
