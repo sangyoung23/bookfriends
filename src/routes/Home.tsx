@@ -6,6 +6,7 @@ import { getBooksAction } from "../redux/actions/GetBooksAction";
 import BookItem from "../components/BookItem";
 import Header from "../components/Header";
 import NovelList from "../components/NovelList";
+import Banner from "../components/Banner";
 
 function Home() {
   const books = useSelector((state: any) => state.books.documents);
@@ -44,18 +45,22 @@ function Home() {
   return (
     <div className="Home">
       <Header />
-      <input
-        placeholder="검색어를 입력하세요"
-        type="text"
-        value={search}
-        onChange={searchBooks}
-      ></input>
-      <div className="search-title">
-        {search.length === 0 ? (
-          <strong>검색 결과가 없습니다</strong>
-        ) : (
-          <strong>{`${search} 검색 결과 입니다`}</strong>
-        )}
+      <Banner />
+      <h1 className="search-head">당신에게 꼭 맞는 책을 찾아보세요 !</h1>
+      <div className="input-box">
+        <input
+          placeholder="검색어를 입력하세요"
+          type="text"
+          value={search}
+          onChange={searchBooks}
+        ></input>
+        <div className="search-title">
+          {search.length === 0 ? (
+            <strong>검색 결과가 없습니다</strong>
+          ) : (
+            <strong>{`${search} 검색 결과 입니다`}</strong>
+          )}
+        </div>
       </div>
       <div className="book-list">
         {books &&

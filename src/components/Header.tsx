@@ -12,12 +12,10 @@ const Header = () => {
         <li>
           <StyledLink to={"/Basket"}>장바구니</StyledLink>
         </li>
+        <li>
+          <StyledLink to={"/Login"}>로그인</StyledLink>
+        </li>
       </ul>
-      <div className="loginout">
-        <StyledLink to={"/Login"}>
-          <h1>로그인</h1>
-        </StyledLink>
-      </div>
     </div>
   );
 };

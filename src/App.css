@@ -12,8 +12,15 @@ body {
 
 /* Header */
 .Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.9;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100vw;
   padding: 20px 150px;
   background-color: white;
 }
@@ -37,7 +44,6 @@ body {
 
 .Header ul {
   display: flex;
-  width: 1300px;
 }
 
 .Header ul li {
@@ -47,22 +53,140 @@ body {
   cursor: pointer;
 }
 
-.Header .loginout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 30px;
-  border-radius: 30px;
-  background-color: #424242;
+/* Banner */
+.Banner {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 770px;
+  position: relative;
+  overflow: hidden;
+  background-color: #e1f5fe;
 }
 
-.Header .loginout h1 {
-  font-size: 14px;
-  color: white;
+.Banner div:first-child {
+  height: 70%;
+  padding: 160px 0 0 120px;
+  background-color: #e3f2fd;
+}
+
+.Banner div:first-child h1 {
+  font-size: 37px;
+  margin-bottom: 25px;
+}
+
+.Banner div:first-child p {
+  font-size: 20px;
+}
+
+.snowflake {
+  --size: 1vw;
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -5vh;
+}
+@keyframes snowfall {
+  0% {
+    transform: translate3d(var(--left-ini), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--left-end), 110vh, 0);
+  }
+}
+
+.snowflake:nth-child(1) {
+  --size: 0.6vw;
+  --left-ini: 2vw;
+  --left-end: 10vw;
+  left: 17vw;
+  animation: snowfall 9s linear infinite;
+  animation-delay: -9s;
+}
+.snowflake:nth-child(2) {
+  --size: 0.8vw;
+  --left-ini: -5vw;
+  --left-end: -7vw;
+  left: 48vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -1s;
+}
+.snowflake:nth-child(3) {
+  --size: 0.2vw;
+  --left-ini: -1vw;
+  --left-end: -9vw;
+  left: 57vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -9s;
+}
+.snowflake:nth-child(4) {
+  --size: 0.2vw;
+  --left-ini: 9vw;
+  --left-end: -1vw;
+  left: 39vw;
+  animation: snowfall 10s linear infinite;
+  animation-delay: -3s;
+}
+.snowflake:nth-child(5) {
+  --size: 0.8vw;
+  --left-ini: 3vw;
+  --left-end: -6vw;
+  left: 60vw;
+  animation: snowfall 10s linear infinite;
+  animation-delay: -1s;
+}
+.snowflake:nth-child(6) {
+  --size: 1vw;
+  --left-ini: -1vw;
+  --left-end: -4vw;
+  left: 12vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -8s;
+}
+.snowflake:nth-child(7) {
+  --size: 1vw;
+  --left-ini: -4vw;
+  --left-end: -7vw;
+  left: 33vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -2s;
+}
+.snowflake:nth-child(8) {
+  --size: 1vw;
+  --left-ini: -4vw;
+  --left-end: -4vw;
+  left: 78vw;
+  animation: snowfall 10s linear infinite;
+  animation-delay: -5s;
+}
+.snowflake:nth-child(9) {
+  --size: 0.6vw;
+  --left-ini: -3vw;
+  --left-end: 1vw;
+  left: 53vw;
+  animation: snowfall 15s linear infinite;
+  animation-delay: -7s;
+}
+.snowflake:nth-child(10) {
+  --size: 0.4vw;
+  --left-ini: 6vw;
+  --left-end: -1vw;
+  left: 62vw;
+  animation: snowfall 8s linear infinite;
+  animation-delay: -8s;
+}
+
+/* title */
+.search-head {
+  font-size: 31px;
+  padding: 50px 0;
+  text-align: center;
 }
 
 /* Home */
+
 .Home .book-list {
   display: flex;
   justify-content: space-between;
@@ -71,21 +195,26 @@ body {
   margin: 0 auto;
 }
 
+.input-box {
+  text-align: center;
+}
+
 .Home input {
-  width: 100%;
+  width: 70%;
   height: 70px;
   padding: 30px 150px;
   font-size: 20px;
-  border: 1px solid #ccc;
+  border: none;
+  border-bottom: 1px solid #ccc;
 }
 
 .Home .search-title {
-  width: 70%;
   margin: 50px auto;
 }
 
 /* BookItem */
 .book-detail {
+  text-align: center;
   width: 150px;
   margin-bottom: 30px;
 }
@@ -103,6 +232,7 @@ body {
 
 .book-detail div > div {
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -113,12 +243,12 @@ body {
 }
 
 .book-detail div > div strong {
-  font-size: 15px;
+  font-size: 13px;
   cursor: pointer;
 }
 
 .book-detail div > div strong:hover {
-  color: #0066ff;
+  color: tomato;
 }
 
 /* Novel List */
@@ -136,21 +266,53 @@ body {
 
 .Novel-List div p {
   font-size: 22px;
+  margin-bottom: 50px;
 }
 
-.Novel-List ul {
-  display: flex;
-  width: 70%;
-  margin: 30px auto;
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+.slider {
+  height: 300px;
+  margin: auto;
   overflow: hidden;
+  position: relative;
+  width: 960px;
+}
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 300px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slider-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+.slider .slide {
+  height: 100px;
+  width: 250px;
 }
 
-.Novel-List ul li {
-  padding: 0 30px;
-  list-style: none;
-}
-
-.Novel-List ul li img {
-  width: 170px;
-  height: 220px;
+.slider .slide img {
+  width: 150px;
+  height: 200px;
 }
