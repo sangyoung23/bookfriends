@@ -7,7 +7,7 @@ function bookSearchHttpHandler(search: string) {
       query: search,
       sort: "accuracy", // accuracy | recency 정확도 or 최신
       page: 1, // 페이지번호
-      size: 21, // 한 페이지에 보여 질 문서의 개수
+      size: 24, // 한 페이지에 보여 질 문서의 개수
     };
     const { data } = await bookSearch(params); // api 호출
 

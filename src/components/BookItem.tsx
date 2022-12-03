@@ -1,12 +1,17 @@
 import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const BookItem = ({ title, author, price, thumbnail }: any) => {
-  const [orders, setOrders] = useState([]);
+import { AddItem } from "../redux/actions/AddItem";
 
-  const addToOrder = (e: any) => {
-    // setOrders();
-    console.log(orders);
-  };
+interface DetailItem {
+  title: string;
+  author: string;
+  price: number;
+  thumbnail: string;
+}
+
+const BookItem = ({ title, author, price, thumbnail }: DetailItem) => {
+  const dispatch = useDispatch();
 
   return (
     <div className="book-detail">
@@ -16,7 +21,13 @@ const BookItem = ({ title, author, price, thumbnail }: any) => {
         <h2>{author}</h2>
         <div>
           <h3>{`${price} 원`}</h3>
-          <strong onClick={addToOrder}>담기</strong>
+          <button
+            onClick={() =>
+              dispatch(AddItem({ title, author, price, thumbnail }))
+            }
+          >
+            담기
+          </button>
         </div>
       </div>
     </div>

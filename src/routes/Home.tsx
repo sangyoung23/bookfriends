@@ -7,13 +7,15 @@ import BookItem from "../components/BookItem";
 import Header from "../components/Header";
 import NovelList from "../components/NovelList";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 
 function Home() {
-  const books = useSelector((state: any) => state.books.documents);
+  const books = useSelector(
+    (state: any) => state.getBooksReducer.books.documents
+  );
+
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
-
-  console.log(books);
 
   useEffect((): any => {
     if (search.length > 0) {
@@ -75,6 +77,7 @@ function Home() {
           ))}
       </div>
       <NovelList />
+      <Footer />
     </div>
   );
 }
