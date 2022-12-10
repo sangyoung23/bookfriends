@@ -1,7 +1,7 @@
 import { bookSearch } from "../Api";
 
 function bookSearchHttpHandler(search: string) {
-  return async (dispatch: any, getState: string[]) => {
+  return async (dispatch: any) => {
     // paramter 설정
     const params = {
       query: search,

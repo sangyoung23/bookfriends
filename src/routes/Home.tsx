@@ -8,18 +8,34 @@ import Header from "../components/Header";
 import NovelList from "../components/NovelList";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
+import Login from "./Login";
+
+export interface BookMap {
+  title: string;
+  authors: string;
+  price: number;
+  thumbnail: string;
+}
 
 function Home() {
   const books = useSelector(
     (state: any) => state.getBooksReducer.books.documents
   );
 
-  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
-  useEffect((): any => {
+  const [search, setSearch] = useState("");
+  const [login, setLogin] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("id") === null) {
+    } else {
+      setLogin(true);
+    }
+  });
+
+  useEffect(() => {
     if (search.length > 0) {
-      // 검색한 글자의 길이가 0 보다 크면 마운트 한다.
       bookSearchHttpHandler();
     }
   }, [search]);
@@ -36,49 +52,47 @@ function Home() {
     setSearch(e.target.value);
   };
 
-  // api BookItem의 매개변수 타입
-  interface Bookmap {
-    title: string;
-    authors: string;
-    price: number;
-    thumbnail: string;
-  }
-
   return (
-    <div className="Home">
-      <Header />
-      <Banner />
-      <h1 className="search-head">당신에게 꼭 맞는 책을 찾아보세요 !</h1>
-      <div className="input-box">
-        <input
-          placeholder="검색어를 입력하세요"
-          type="text"
-          value={search}
-          onChange={searchBooks}
-        ></input>
-        <div className="search-title">
-          {search.length === 0 ? (
-            <strong>검색 결과가 없습니다</strong>
-          ) : (
-            <strong>{`${search} 검색 결과 입니다`}</strong>
-          )}
+    <>
+      {login ? (
+        <div className="Home">
+          <Header />
+          <Banner />
+          <h1 className="search-head">당신에게 꼭 맞는 책을 찾아보세요 !</h1>
+          <div className="input-box">
+            <input
+              placeholder="검색어를 입력하세요"
+              type="text"
+              value={search}
+              onChange={searchBooks}
+            ></input>
+            <div className="search-title">
+              {search.length === 0 ? (
+                <strong>검색 결과가 없습니다</strong>
+              ) : (
+                <strong>{`${search} 검색 결과 입니다`}</strong>
+              )}
+            </div>
+          </div>
+          <div className="book-list">
+            {books &&
+              books.map((books: BookMap, index: null) => (
+                <BookItem
+                  key={index}
+                  title={books.title}
+                  author={books.authors}
+                  price={books.price}
+                  thumbnail={books.thumbnail}
+                />
+              ))}
+          </div>
+          <NovelList />
+          <Footer />
         </div>
-      </div>
-      <div className="book-list">
-        {books &&
-          books.map((books: Bookmap, index: any) => (
-            <BookItem
-              key={index}
-              title={books.title}
-              author={books.authors}
-              price={books.price}
-              thumbnail={books.thumbnail}
-            />
-          ))}
-      </div>
-      <NovelList />
-      <Footer />
-    </div>
+      ) : (
+        <Login />
+      )}
+    </>
   );
 }
 

@@ -1,6 +1,12 @@
 import StyledLink from "../styles/StyledLink";
 
 const Header = () => {
+  const logout = () => {
+    localStorage.removeItem("id");
+    localStorage.removeItem("password");
+    document.location.href = "/login";
+  };
+
   return (
     <div className="Header">
       <div className="title">
@@ -13,7 +19,9 @@ const Header = () => {
           <StyledLink to={"/Basket"}>장바구니</StyledLink>
         </li>
         <li>
-          <StyledLink to={"/Login"}>로그인</StyledLink>
+          <button type="button" onClick={logout}>
+            <StyledLink to={"/Login"}>로그아웃</StyledLink>
+          </button>
         </li>
       </ul>
     </div>

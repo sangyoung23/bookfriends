@@ -1,14 +1,12 @@
-interface ResInitialstate {
-  books: [];
-}
+import { Member } from "../reducer/cartReducer";
 
 //books state의 초기값  설정
-let initialState: ResInitialstate = {
+let initialState = {
   books: [],
 };
 
 // 행동지침서 reducer 작성 reducer는 2개의 매개변수를 받는다 state값과 action
-function getBooksreducer(state = initialState, action: any) {
+function getBooksreducer(state = initialState, action: Member) {
   let { type, payload } = action;
   switch (type) {
     case "GET_BOOKS_SUCCESS":

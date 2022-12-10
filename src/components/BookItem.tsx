@@ -1,9 +1,8 @@
-import React, { useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { AddItem } from "../redux/actions/AddItem";
+import { AddItem } from "../redux/actions/cartAction";
 
-interface DetailItem {
+export interface DetailItem {
   title: string;
   author: string;
   price: number;
