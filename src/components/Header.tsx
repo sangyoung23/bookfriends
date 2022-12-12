@@ -1,3 +1,4 @@
+import React from "react";
 import StyledLink from "../styles/StyledLink";
 
 const Header = () => {
@@ -28,4 +29,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

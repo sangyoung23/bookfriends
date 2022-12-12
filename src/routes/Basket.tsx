@@ -14,6 +14,7 @@ export interface CartItem {
   price: number;
   quantity?: number;
   thumbnail: string;
+  total: number;
 }
 
 const Basket = () => {
@@ -39,8 +40,8 @@ const Basket = () => {
     }
   };
 
-  const TotalBookPrice = cart.reduce((a: number, b: { price: number }) => {
-    return a + b.price;
+  const TotalBookPrice = cart.reduce((a: number, b: { total: number }) => {
+    return a + b.total;
   }, 0);
 
   return (
@@ -92,7 +93,7 @@ const Basket = () => {
                   <button onClick={() => dispatch(decrement(item))}>-</button>
                 </div>
                 <div className="delete-price">
-                  <strong>{`${item.price.toLocaleString()} 원`}</strong>
+                  <strong>{`${item.total.toLocaleString()} 원`}</strong>
                   <button onClick={() => dispatch(DeleteItem(item.title))}>
                     삭제
                   </button>

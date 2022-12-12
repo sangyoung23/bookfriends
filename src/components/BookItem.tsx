@@ -7,9 +7,10 @@ export interface DetailItem {
   author: string;
   price: number;
   thumbnail: string;
+  total: number;
 }
 
-const BookItem = ({ title, author, price, thumbnail }: DetailItem) => {
+const BookItem = ({ title, author, price, thumbnail, total }: DetailItem) => {
   const dispatch = useDispatch();
 
   return (
@@ -22,7 +23,7 @@ const BookItem = ({ title, author, price, thumbnail }: DetailItem) => {
           <h3>{`${price} 원`}</h3>
           <button
             onClick={() =>
-              dispatch(AddItem({ title, author, price, thumbnail }))
+              dispatch(AddItem({ title, author, price, thumbnail, total }))
             }
           >
             담기

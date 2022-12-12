@@ -1,4 +1,3 @@
-import { iteratorSymbol } from "immer/dist/internal";
 import { CartItem } from "../../routes/Basket";
 
 export type Member = { type: string; payload?: any };
@@ -13,7 +12,7 @@ const cartReducer = (state: CartItem[] = [], action: Member) => {
       // 같은 제목의 책이 있다면 quantity값을 + 1
       if (fined) {
         fined.quantity += action.payload.quantity;
-        fined.price += action.payload.price;
+        fined.total += action.payload.price;
         // 없다면 state를 펼쳐주고 action.payload 값 추가
       } else {
         return [...state, action.payload];
@@ -33,6 +32,7 @@ const cartReducer = (state: CartItem[] = [], action: Member) => {
       );
       if (plus) {
         plus.quantity += 1;
+        action.payload.total = action.payload.price * plus.quantity;
       }
       return [...state];
 
@@ -42,8 +42,9 @@ const cartReducer = (state: CartItem[] = [], action: Member) => {
       );
       if (minus && minus.quantity > 1) {
         minus.quantity -= 1;
-        action.payload.price -= minus.price;
+        action.payload.total -= action.payload.price;
       }
+
       return [...state];
 
     default:

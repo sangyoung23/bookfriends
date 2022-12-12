@@ -15,6 +15,7 @@ export interface BookMap {
   authors: string;
   price: number;
   thumbnail: string;
+  total: number;
 }
 
 function Home() {
@@ -40,7 +41,6 @@ function Home() {
     }
   }, [search]);
 
-  // book search 핸들러
   const bookSearchHttpHandler = () => {
     // dispatch안에 미들웨어 함수를 담아줌으로써 getBooksAction 함수(미들웨어)를 거쳐서 가게된다.
     // dispatch로 전달할 때 search state를 전달하여 미들웨어 함수에서 search를 사용할 수 있게 된다.
@@ -51,7 +51,6 @@ function Home() {
   const searchBooks = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
-
   return (
     <>
       {login ? (
@@ -83,6 +82,7 @@ function Home() {
                   author={books.authors}
                   price={books.price}
                   thumbnail={books.thumbnail}
+                  total={books.total}
                 />
               ))}
           </div>
