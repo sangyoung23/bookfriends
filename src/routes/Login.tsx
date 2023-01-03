@@ -40,7 +40,7 @@ const Login = () => {
           onKeyUp={changeButton}
         ></input>
         <button type="button" disabled={button} onClick={goToHome}>
-          Submit
+          로그인
         </button>
       </div>
     </div>

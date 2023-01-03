@@ -491,7 +491,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 80px 50px;
-  opacity: 0.6;
+  opacity: 0.8;
   background-color: black;
 }
 
@@ -522,10 +522,12 @@ body {
   font-size: 20px;
   height: 40px;
   margin-top: 50px;
+  color: black;
   cursor: pointer;
 }
 
 .Login .login-form button:disabled {
+  color: white;
   cursor: not-allowed;
   background-color: rgba(188, 188, 188, 0.3);
 }
